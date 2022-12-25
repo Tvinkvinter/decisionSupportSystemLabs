@@ -1,0 +1,49 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Recommender</title>
+    <link rel="stylesheet" href="{% static 'recommender/css/styleNull.css' %}">
+    <link rel="stylesheet" href="{% static 'recommender/css/styleMain.css' %}">
+    <link rel="stylesheet" href="{% static 'recommender/css/styleMedia.css' %}">
+    <link rel="shortcut icon" href="{% static 'recommender/images/favicon/favicon.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="window_page_2">
+      <div class="cap">
+        <div class="logo"></div>
+        <nav class="menu">
+          <a href="">Recommender</a>
+        </nav>
+
+        <div class="menu_burger"></div>
+      </div>
+    </div>
+
+    <div id="r1" class="content">
+      <div class="content_block">
+
+        <div class="carts_books">
+          {% for book in info %}
+          <div class="cart_item">
+            <div class="cart_item-body">
+              <div class="item_photo">
+                <img src= "{{ book.photo }}" alt="Not found">
+              </div>
+              <div class="item_text">
+                <p class="item_text-nameBook">{{ book.book_title }}</p>
+                <p class="item_text-nameAuthor">{{ book.book_author }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+          </div>
+        </div>
+      </div>
+	<script src="{% static 'recommender/js/script.js' %}"> </script>
+  </body>
+</html>

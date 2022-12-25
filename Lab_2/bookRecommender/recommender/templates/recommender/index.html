@@ -1,0 +1,103 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Recommender</title>
+    <link rel="stylesheet" href="{% static 'recommender/css/styleNull.css' %}">
+    <link rel="stylesheet" href="{% static 'recommender/css/styleMain.css' %}">
+    <link rel="stylesheet" href="{% static 'recommender/css/styleMedia.css' %}">
+    <link rel="shortcut icon" href="{% static 'recommender/images/favicon/favicon.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    
+    <div class="window_1">
+      <div class="cap">
+        <div class="logo"></div>
+        <nav class="menu">
+          <a href="#r1">Recommender</a>
+        </nav>
+
+        <div class="menu_burger"></div>
+      </div>
+
+      <div class="text">
+        <h1>Book <br> Recommender<span>.</span></h1>
+        <p>A reader lives a thousand lives before he dies</p>
+      </div>
+
+      <div class="background">
+
+      </div>
+    </div>
+
+    <div id="r1" class="content">
+      <div class="content_block">
+        <form action="{% url 'recommendation' %}" method="post">
+          {% csrf_token %}
+          <div class="add_book">
+            <div class="stars">
+              <p class="star star1"></p>
+              <p class="star star2"></p>
+              <p class="star star3"></p>
+              <p class="star star4"></p>
+              <p class="star star5"></p>
+              <p class="star star6"></p>
+              <p class="star star7"></p>
+              <p class="star star8"></p>
+              <p class="star star9"></p>
+              <p class="star star10"></p>
+            </div>
+            <input name="stars" type="hidden" value="0">
+            <input autocomplete="off" placeholder="Add a book" class="input_book" type="text" name="book">
+          </div>
+          <div class="add_book">
+            <div class="stars">
+              <p class="star star1"></p>
+              <p class="star star2"></p>
+              <p class="star star3"></p>
+              <p class="star star4"></p>
+              <p class="star star5"></p>
+              <p class="star star6"></p>
+              <p class="star star7"></p>
+              <p class="star star8"></p>
+              <p class="star star9"></p>
+              <p class="star star10"></p>
+            </div>
+            <input name="stars" type="hidden" value="0">
+            <input autocomplete="off" placeholder="Add a book" class="input_book" type="text" name="book">
+          </div>
+          <div class="add_book">
+            <div class="stars">
+              <p class="star star1"></p>
+              <p class="star star2"></p>
+              <p class="star star3"></p>
+              <p class="star star4"></p>
+              <p class="star star5"></p>
+              <p class="star star6"></p>
+              <p class="star star7"></p>
+              <p class="star star8"></p>
+              <p class="star star9"></p>
+              <p class="star star10"></p>
+            </div>
+            <input name="stars" type="hidden" value="0">
+            <input autocomplete="off" placeholder="Add a book" class="input_book" type="text" name="book">
+          </div>
+
+
+          <div class="plus"></div>
+          <button class="get_button" type="submit">Get recommendation</button>
+        </form>
+        <div class="loader">
+          <div class="loader_text">
+          <p>W</p><p>a</p><p>i</p><p>t</p><p> </p><p>a</p><p> </p><p>b</p><p>i</p><p>t</p><p>.</p><p>.</p><p>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<script src="{% static 'recommender/js/script.js' %}"> </script>
+  </body>
+</html>

@@ -19,8 +19,9 @@ def recommendation(request):
             input_stars.append(star)
         for i in range(len(input_books)):
             query.append(dict(book_title=input_books[i], rating=input_stars[i]))
-        recommender.processDataSet()
-        cards = recommender.getRecommendation(query)
+        pd.DataFrame(query).to_csv("query.csv", index=False)
+        #recommender.processDataSet()
+        cards = recommender.getRecommendation()
         print(cards)
 
     return render(request, 'recommender/recommendation.html', {'info': cards})

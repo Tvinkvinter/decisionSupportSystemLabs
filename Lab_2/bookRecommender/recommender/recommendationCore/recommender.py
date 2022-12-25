@@ -9,7 +9,7 @@ def processDataSet():
     ratings_df = pd.read_csv("D:\python\Studying\СППР\Lab_2\dataset\Preprocessed_data.csv")
     ratings_df = ratings_df.loc[ratings_df['rating'] > 0]
     ratings_df = ratings_df.loc[ratings_df['Language'] == 'en']
-    n = 30000
+    n = 50000
 
     card_info = ratings_df[:n][['isbn', 'book_title', 'book_author', 'img_l']]
     card_info = card_info.drop_duplicates()
@@ -56,12 +56,19 @@ def processDataSet():
                    index=False)
 
 
-def getRecommendation(books):
+def getRecommendation(books=None):
     id_isbn = pd.read_csv('D:\python\Studying\СППР\Lab_2\\bookRecommender\\recommender\\recommendationCore\id_isbn.csv')
     data_matrix = pd.read_csv(
         'D:\python\Studying\СППР\Lab_2\\bookRecommender\\recommender\\recommendationCore\data_matrix.csv')
     card_info = pd.read_csv(
         'D:\python\Studying\СППР\Lab_2\\bookRecommender\\recommender\\recommendationCore\card_info.csv')
+
+    if books is None:
+        query = pd.read_csv("query.csv").to_numpy()
+        books = []
+        for row in query:
+            books.append({'book_title': row[0], 'rating': row[1]})
+
     books = pd.DataFrame.from_records(books)
     books = books.merge(id_isbn, on='book_title')[['book_id', 'rating']]
     data_matrix.loc[len(data_matrix.index)] = 0
@@ -129,7 +136,7 @@ def getRecommendation(books):
 #
 # processDataSet()
 # begin = time.time()
-# rec_books = getRecommendation(books2)
+# rec_books = getRecommendation(books1)
 # for book in rec_books:
 #     print(book)
 # end = time.time()
